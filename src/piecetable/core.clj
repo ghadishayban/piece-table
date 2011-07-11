@@ -5,7 +5,9 @@
 (deftype Piece [fname offset len])
 
 (defn split-piece [p offset]
-  (let [l (.len p) b (.fname p) o (.offset p)]
+  (let [l (.len p) 
+        b (.fname p) 
+        o (.offset p)]
     [(Piece. b o offset)
      (Piece. b (+ o offset) (- l offset))]))
 
@@ -32,15 +34,18 @@
           (let [[l-chunk r-chunk] (split-piece m diff)]
             [(conj l l-chunk) (ft/consl r r-chunk)]))))
 
-(defn delete-piece [tree offset len]
+(defn delete-piece [pt offset len]
   ;; could be a recursive solution too...
   ;; find the seams, delete, stich back together
-  (let [[l _] (split-table tree offset)
-        [_ r] (split-table tree (+ offset len))]
+  (let [[l _] (split-table pt offset)
+        [_ r] (split-table pt (+ offset len))]
     (ft/ft-concat l r)))
 
-(defn insert-piece [tree offset piece]
-  (let [[l r] (split-table tree offset)]
+(defn insert-piece [pt offset piece]
+  (let [[l r] (split-table pt offset)]
     (ft/ft-concat (conj l piece) r)))
+
+;; delete-range
+;; insert-string
 
 
