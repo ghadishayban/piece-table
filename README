@@ -1,7 +1,7 @@
 # piecetable
 
-FIXME: write description
-
+Persistent piece-table implementation using Clojure
+and Chris Houser's excellent finger trees
 ## Usage
 
 FIXME: write
